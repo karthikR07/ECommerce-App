@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const multer = require("multer")();
 const userController = require("./user/routes/user")
 
 const app = express();
@@ -16,6 +17,7 @@ app.listen(3001, (err)=>{
 //Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(multer.array());
 
 //Database connect
 mongoose.connect("mongodb://localhost/ecommerce",(data)=>{
@@ -25,7 +27,7 @@ mongoose.connect("mongodb://localhost/ecommerce",(data)=>{
 });
 
 app.get("/", (req,res)=>{
-    res.send("eCommerce Backend")
+    res.status(200).send("eCommerce Backend")
 });
 
 //middleware
