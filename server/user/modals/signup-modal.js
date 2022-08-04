@@ -7,7 +7,7 @@ const signupSchema = new mongoose.Schema({
     },
     phone_number:{
         type : Number,
-        reuored : true,
+        required : true,
         minLength: 10,
         maxLength: 10
     },
